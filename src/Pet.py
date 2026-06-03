@@ -12,7 +12,7 @@ class Pet(QLabel):
     def __init__(self, name):
         super().__init__()
 
-        # image related variables
+        # Image related variables
         self.name = name
         self.evolution_stage = 0
         base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -35,6 +35,7 @@ class Pet(QLabel):
         self.on_delay = False
         self.is_walking = False
         self.in_battle = False
+        self.info_window = InfoWindow(pet=self)
 
         # Initial configuration
         self._load_image()
@@ -364,7 +365,6 @@ class Pet(QLabel):
         """
         Shows the pet info.
         """
-        self.info_window = InfoWindow(pet=self)
         self.info_window.show()
 
     def close_pet(self):

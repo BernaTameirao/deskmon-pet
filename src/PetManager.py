@@ -44,7 +44,7 @@ class PetManager:
             for pet2 in active_pets[i+1:]:
 
                 # If all conditions are met, there is a random chance that a battle occurs.
-                if self.check_proximity(pet1, pet2, proximity_x=100, proximity_y=100) and random.random() < 0.02:
+                if self.check_proximity(pet1, pet2, proximity_x=100, proximity_y=100) and random.random() < 0.1:
                     self.battle(pet1, pet2)
 
     
@@ -100,7 +100,7 @@ class PetManager:
         n = 5
         # Two moves are chosen at random.
         move1 = random.randint(1, n)
-        time.sleep(0.001)
+        time.sleep(0.01)
         move2 = random.randint(1, n)
 
         # A rock-paper-scissor like script decides the winner.

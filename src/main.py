@@ -1,10 +1,9 @@
-from PyQt5.QtWidgets import QApplication
 import sys
 import os
 import logging
+from PyQt5.QtWidgets import QApplication
 
-from Pet import Pet
-from PetManager import PetManager
+from StartWindow import StartWindow
 
 def main():
     logging.basicConfig(
@@ -23,13 +22,8 @@ def main():
     
     logging.info(f"Starting pets: {', '.join(pet_names)}")
 
-    manager = PetManager()
-    pets = []
-    for name in pet_names:
-        pets.append(Pet(name=name))
-        pets[-1].show()
-
-        manager.add_pet(pets[-1])
+    start_window = StartWindow(pet_names=pet_names)
+    start_window.show()
     app.exec_()
 
 if __name__ == "__main__":

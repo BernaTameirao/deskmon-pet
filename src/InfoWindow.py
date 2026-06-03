@@ -9,16 +9,16 @@ class InfoWindow(QDialog):
 
         self.pet = pet
         self.setWindowTitle(f"{pet.name.capitalize()} — Info")
-        self.setMinimumWidth(250)
-        self.setStyleSheet(self.info_style())
+        self.setFixedWidth(350)
+        self.setStyleSheet(self._info_style())
 
-        self.build_ui()
+        self._build_ui()
 
         self.update_timer = QTimer(self)
         self.update_timer.timeout.connect(self.update_info)
         self.update_timer.start(100)
     
-    def build_ui(self):
+    def _build_ui(self):
         layout = QVBoxLayout()
 
         self.name_label = QLabel()
@@ -33,7 +33,7 @@ class InfoWindow(QDialog):
 
         self.update_info()
 
-    def info_style(self):
+    def _info_style(self):
         base_dir = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(base_dir, "../stylesheets/info_window.qss"), "r") as f:
             style = f.read()
@@ -41,6 +41,6 @@ class InfoWindow(QDialog):
         return style
 
     def update_info(self):
-        self.name_label.setText(f"Nome: {self.pet.name.capitalize()}")
-        self.level_label.setText(f"Nível: {self.pet.level}")
-        self.evo_label.setText(f"Evolução: {self.pet.evolution_stage}")
+        self.name_label.setText(f"Name: {self.pet.name.capitalize()}")
+        self.level_label.setText(f"Level: {self.pet.level}")
+        self.evo_label.setText(f"Evolution Stage: {self.pet.evolution_stage}")
