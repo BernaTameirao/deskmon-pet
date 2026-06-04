@@ -216,7 +216,7 @@ class Pet(QLabel):
         aux_top = bounds[0].top() + 50
         for bound in bounds:
             if self.pos_x >= bound.left() and self.pos_x <= bound.right():
-                self.floor = bound.bottom() - self.height() - 50
+                self.floor = bound.bottom() - self.height() - 30
                 aux_top = bound.top() + 50
                 break
 
@@ -224,7 +224,7 @@ class Pet(QLabel):
         for window in self.windows:
             if self.pos_x + self.width()/2 >= window[0] and self.pos_x + self.width()/2 <= window[2]:
                 if self.pos_y <= window[1] and self.floor > window[1] and aux_top < window[1]:
-                    self.floor = window[1] - self.height()
+                    self.floor = window[1] - self.height() + 20
                     break
 
         # If the difference between pos_y and the floor is greater than 30 pixels, it is considered a fall.
