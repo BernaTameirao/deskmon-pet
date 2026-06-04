@@ -36,6 +36,10 @@ class PetManager:
         """
         Checks for interactions between the pets.
         """
+        # Update the coords of every visible window to every pet.
+        windows = self._get_windows()
+        for pet in self.pets:
+            pet.windows = windows
 
         # Gets a list of only avaliable pets.
         active_pets = [p for p in self.pets if not p.in_battle]
@@ -171,3 +175,23 @@ class PetManager:
         timer = QTimer()
         timer.timeout.connect(animate)
         timer.start(15)
+
+    def _get_windows(self):
+        """
+        Gets the coords of every open window and sends to every pet.
+        """
+        import win32gui
+        windows = []
+
+        def enum_handler(hwnd, _):
+            if win32gui.IsWindowVisible(hwnd):
+                rect = win32gui.GetWindowRect(hwnd)
+                windows.append((hwnd, rect))
+
+        win32gui.EnumWindows(enum_handler, None)
+
+        pet_ids = [int(pet.winId()) for pet in self.pets]
+        filtered_windows = [rect for hwnd, rect in windows if hwnd not in pet_ids]
+
+        sorted_windows = sorted(filtered_windows, key=lambda a: a[1])
+        return sorted_windows

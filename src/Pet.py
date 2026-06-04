@@ -28,6 +28,8 @@ class Pet(QLabel):
         self.level = 5
         self.walk_cycle = 0
         self.manager = None
+        self.info_window = InfoWindow(pet=self)
+        self.windows = []
 
         # Flags / Utility
         self.drag_offset = None
@@ -35,7 +37,6 @@ class Pet(QLabel):
         self.on_delay = False
         self.is_walking = False
         self.in_battle = False
-        self.info_window = InfoWindow(pet=self)
 
         # Initial configuration
         self._load_image()
@@ -79,9 +80,10 @@ class Pet(QLabel):
     def _setup_screens(self):
         self.screens = QApplication.instance().screens()
         area = self.screens[0].virtualGeometry()
-        self.left, self.top = area.left(), area.top()
+        self.left = area.left()
+        self.top = area.top() - self.height() + 60
         self.right = area.right() - self.width()
-        self.floor = area.bottom() - self.height() - 20
+        self.floor = area.bottom()
 
     def _create_context_menu(self):
         
@@ -209,14 +211,26 @@ class Pet(QLabel):
         """
         Prevents the pet from escaping the screen bounds.
         """
-
         # Floor is determined by the bottom bound of which screen the pet is in.
         bounds = [screen.geometry() for screen in self.screens]
+        aux_top = bounds[0].top() + 50
         for bound in bounds:
             if self.pos_x >= bound.left() and self.pos_x <= bound.right():
-                self.floor = bound.bottom() - self.height() - 20
+                self.floor = bound.bottom() - self.height() - 50
+                aux_top = bound.top() + 50
                 break
 
+        # Floor can be determined by the top of open windows.
+        for window in self.windows:
+            if self.pos_x + self.width()/2 >= window[0] and self.pos_x + self.width()/2 <= window[2]:
+                if self.pos_y <= window[1] and self.floor > window[1] and aux_top < window[1]:
+                    self.floor = window[1] - self.height()
+                    break
+
+        # If the difference between pos_y and the floor is greater than 30 pixels, it is considered a fall.
+        if abs(self.pos_y - self.floor) > 30:
+            self.is_walking = False
+        
         # If beyond any of the limits, the pet is obstructed to go any further.
         self.pos_x = max(self.left, min(self.pos_x, self.right))
         self.pos_y = max(self.top, min(self.pos_y, self.floor))
