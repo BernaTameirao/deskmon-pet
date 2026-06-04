@@ -5,8 +5,9 @@ import math
 from PyQt5.QtCore import QTimer
 
 class PetManager:
-    def __init__(self):
-        self.pets = [] 
+    def __init__(self, main_window):
+        self.pets = []
+        self.main_window = main_window
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.update)
@@ -20,7 +21,6 @@ class PetManager:
             pet: object to be added to the list.
         """
         self.pets.append(pet)
-        pet.manager = self
 
     def remove_pet(self, pet):
         """

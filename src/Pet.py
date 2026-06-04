@@ -9,7 +9,7 @@ from PyQt5.QtCore import Qt, QTimer
 from InfoWindow import InfoWindow
 
 class Pet(QLabel):
-    def __init__(self, name):
+    def __init__(self, name:str, manager):
         super().__init__()
 
         # Image related variables
@@ -22,12 +22,12 @@ class Pet(QLabel):
         )
 
         # Pet state
-        self.pos_x, self.pos_y = random.randint(500, 1500), random.randint(200, 400)
+        self.manager = manager
+        self.pos_x, self.pos_y = manager.main_window.x() + random.randint(-500, 500), manager.main_window.y() + random.randint(-200, 200)
         self.direction = random.choice([1, -1])
         self.vx, self.vy = random.randint(0, 3)*self.direction, 0
         self.level = 5
         self.walk_cycle = 0
-        self.manager = None
         self.info_window = InfoWindow(pet=self)
         self.windows = []
 
