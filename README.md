@@ -46,16 +46,37 @@ desktop-pet/
 
 ## How to Run
 
-### Install dependencies
+### 1. Get the project
+
+You can get the project in two ways:
+
+#### Option A — Clone the repository
 
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/BernaTameirao/deskmon-pet.git
 ```
 
-### Run the application
+#### Option B — Download ZIP
+- Download the repository as a .zip file from GitHub
+- Extract it
+- Open the folder in your terminal
+
+### 2. Enter the project directory
 
 ```bash
-python deskmon-pet/src/main.py
+cd ./deskmon-pet
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r ./requirements.txt
+```
+
+### 4. Run the application
+
+```bash
+python ./src/main.py
 ```
 
 Pets will appear on your desktop.  
