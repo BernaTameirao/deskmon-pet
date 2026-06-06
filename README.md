@@ -1,6 +1,6 @@
 # Deskmon Pet
 
-**Desktop Pet** is a small **Python + PyQt5** desktop application that brings animated pets to your screen.  
+**Deskmon Pet** is a small **Python + PyQt5** desktop application that brings animated pets to your screen.  
 They walk, jump and can even be dragged with your mouse — all in real time!
 
 <img width="639" height="360" alt="0604" src="https://github.com/user-attachments/assets/5b91a43b-d99c-4b34-bbca-0c8c2dbb4fd3" />
@@ -55,10 +55,10 @@ pip install -r requirements.txt
 ### Run the application
 
 ```bash
-python desktop-pet/src/main.py
+python deskmon-pet/src/main.py
 ```
 
-Three pets will appear on your desktop.  
+Pets will appear on your desktop.  
 They will move automatically, and you can drag them around or interact with them using the mouse.
 
 ---

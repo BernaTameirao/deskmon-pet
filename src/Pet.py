@@ -216,7 +216,8 @@ class Pet(QLabel):
         aux_top = bounds[0].top() + 50
         for bound in bounds:
             if self.pos_x >= bound.left() and self.pos_x <= bound.right():
-                self.floor = bound.bottom() - self.height() - 30
+                self.floor = bound.bottom()
+                # Top limit is determined to prevent out of vision pet-window interaction.
                 aux_top = bound.top() + 50
                 break
 
