@@ -12,24 +12,28 @@ class Pet(QLabel):
     def __init__(self, name:str, manager):
         super().__init__()
 
-        # Image related variables
-        self.name = name
-        self.evolution_stage = 0
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        self.img_dir = os.path.join(base_dir, "../imgs")
-        self.image_path = os.path.join(
-            self.img_dir, f"{self.name}_{self.evolution_stage}.png"
-        )
+        # Directory related variables
+        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+        # Manager related variables
+        pet_data = manager.pet_data[name]
+        self.evolution_levels = pet_data["evolution_levels"]
+        self.behaviour = pet_data["behaviour"]
+        self.images = pet_data["images"]
+        self.base_speed = int(pet_data["base_speed"])
+        self.image_path = os.path.join(self.base_dir, f"./imgs/{self.images[0]}")
+        self.windows = []
 
         # Pet state
+        self.name = name
+        self.evolution_stage = 0
         self.manager = manager
         self.pos_x, self.pos_y = manager.main_window.x() + random.randint(-500, 500), manager.main_window.y() + random.randint(-200, 200)
         self.direction = random.choice([1, -1])
-        self.vx, self.vy = random.randint(0, 3)*self.direction, 0
+        self.vx, self.vy = self.base_speed*self.direction, 0
         self.level = 5
         self.walk_cycle = 0
         self.info_window = InfoWindow(pet=self)
-        self.windows = []
 
         # Flags / Utility
         self.drag_offset = None
@@ -88,9 +92,8 @@ class Pet(QLabel):
     def _create_context_menu(self):
         
         # Loads the qss file
-        base_dir = os.path.dirname(os.path.abspath(__file__))
         try:
-            with open(os.path.join(base_dir, "../stylesheets/menu.qss"), "r") as f:
+            with open(os.path.join(self.base_dir, "../stylesheets/menu.qss"), "r") as f:
                 menu_style = f.read()
         except FileNotFoundError:
             menu_style = ""
@@ -121,15 +124,13 @@ class Pet(QLabel):
 
         if self.drag_offset:
             return
+        
+        if "walking" in self.behaviour:
+            if not self._fall_pet():
+                self._walk_pet()
 
-        if not self._fall_pet():
-            self._walk_pet()
-
-            if self.level >= 15 and self.evolution_stage == 0:
-                self._evolve_pet()
-
-            if self.level >= 36 and self.evolution_stage == 1:
-                self._evolve_pet()
+                if self.evolution_stage < len(self.evolution_levels) and self.level >= self.evolution_levels[self.evolution_stage]:
+                    self._evolve_pet()
 
         self._cant_escape_bounds()
         self.move(self.pos_x, self.pos_y)
@@ -171,7 +172,7 @@ class Pet(QLabel):
             return
 
         self.walk_cycle += 1
-        self.vx = 2 * self.direction
+        self.vx = self.base_speed * self.direction
         self.pos_x += self.vx
 
         # Smooth vertical motion (sinusoidal rocking)
@@ -253,9 +254,7 @@ class Pet(QLabel):
             if iteration_counter >= 300:
                 # Changes the pet sprite.
                 self.evolution_stage += 1
-                self.image_path = os.path.join(
-                    self.img_dir, f"{self.name}_{self.evolution_stage}.png"
-                )
+                self.image_path = os.path.join(self.base_dir, f"./imgs/{self.images[self.evolution_stage]}")
                 self._load_image()
 
                 # The original timer is run again.

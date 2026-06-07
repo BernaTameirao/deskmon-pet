@@ -15,14 +15,7 @@ def main():
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False)
 
-    pet_names = set()
-    for img in os.listdir("imgs"):
-        pet_name = img.split("_")[0]
-        pet_names.add(pet_name)
-    
-    logging.info(f"Starting pets: {', '.join(pet_names)}")
-
-    start_window = StartWindow(pet_names=pet_names)
+    start_window = StartWindow()
     start_window.show()
     app.exec_()
 

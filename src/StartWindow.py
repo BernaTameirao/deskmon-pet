@@ -9,18 +9,17 @@ from Pet import Pet
 from PetManager import PetManager
 
 class StartWindow(QMainWindow):
-    def __init__(self, pet_names:list[str]):
+    def __init__(self):
         super().__init__()
 
         # Pet related variables
-        self.pet_names = pet_names
-        self.pets = []
         self.manager = PetManager(main_window = self)
+        self.pet_names = self.manager.pet_data.keys()
 
         # Window configurations
         self.setWindowTitle("Deskmon Pet")
         self.setFixedWidth(300)
-        self.setFixedHeight(300)
+        self.setFixedHeight(350)
         self.setStyleSheet(self._info_style())
         self.setWindowFlags(
             Qt.WindowType.Window |
@@ -47,11 +46,13 @@ class StartWindow(QMainWindow):
         label.setText("Your Deskmon:")
         layout.addWidget(label)
 
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         for name in self.pet_names:
-            img = Image.open(f"imgs/{name}_0.png")
+            img_path = os.path.join(base_dir, f"./imgs/{self.manager.pet_data[name]["images"][0]}")
+            img = Image.open(img_path)
             x1, y1, x2, y2 = img.getbbox()
 
-            pixmap = QPixmap(f"imgs/{name}_0.png")
+            pixmap = QPixmap(img_path)
             pixmap = pixmap.copy(x1, y1, x2-x1, y2-y1)
 
             button = QPushButton()
@@ -69,9 +70,9 @@ class StartWindow(QMainWindow):
         return style
 
     def create_pet(self, name):
-        self.pets.append(Pet(name=name, manager=self.manager))
-        self.pets[-1].show()
-        self.manager.add_pet(self.pets[-1])
+        pet = Pet(name=name, manager=self.manager)
+        pet.show()
+        self.manager.add_pet(pet)
 
     def closeEvent(self, event):
         QApplication.quit()

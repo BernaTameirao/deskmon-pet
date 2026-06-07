@@ -1,6 +1,8 @@
 import time
 import random
 import math
+import json
+import os
 
 from PyQt5.QtCore import QTimer
 
@@ -8,10 +10,17 @@ class PetManager:
     def __init__(self, main_window):
         self.pets = []
         self.main_window = main_window
+        
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self._get_pet_data_from_json(path=os.path.join(base_dir, "./data/data.json"))
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.update)
         self.timer.start(50)  # 20 frames/second
+
+    def _get_pet_data_from_json(self, path):
+        with open(path, "r", encoding="utf-8") as f:
+            self.pet_data = json.load(f)
 
     def add_pet(self, pet):
         """

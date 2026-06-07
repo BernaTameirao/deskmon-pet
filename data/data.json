@@ -1,0 +1,20 @@
+{   
+    "bulbasaur": {
+        "base_speed": 1,
+        "behaviour": ["walking"],
+        "evolution_levels": [15, 36],
+        "images": ["bulbasaur_0.png", "bulbasaur_1.png", "bulbasaur_2.png"]
+    },
+    "charmander": {
+        "base_speed": 3,
+        "behaviour": ["walking"],
+        "evolution_levels": [15, 36],
+        "images": ["charmander_0.png", "charmander_1.png", "charmander_2.png"]
+    },
+    "squirtle": {
+        "base_speed": 2,
+        "behaviour": ["walking"],
+        "evolution_levels": [15, 36],
+        "images":  ["squirtle_0.png", "squirtle_1.png", "squirtle_2.png"]
+    }
+}
