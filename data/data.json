@@ -1,34 +1,66 @@
-{   
+{
     "bulbasaur": {
         "base_speed": 1,
         "behaviour": "walking",
-        "evolution_levels": [16, 32],
+        "evolution_levels": [
+            16,
+            32
+        ],
         "health": 9,
-        "images": ["bulbasaur_0.png", "bulbasaur_1.png", "bulbasaur_2.png"],
-        "unlocked": "True"
+        "images": [
+            "bulbasaur_0.png",
+            "bulbasaur_1.png",
+            "bulbasaur_2.png"
+        ],
+        "rarity": "rare",
+        "unlocked": true
     },
     "charmander": {
         "base_speed": 2,
         "behaviour": "walking",
-        "evolution_levels": [16, 36],
+        "evolution_levels": [
+            16,
+            36
+        ],
         "health": 8,
-        "images": ["charmander_0.png", "charmander_1.png", "charmander_2.png"],
-        "unlocked": "True"
+        "images": [
+            "charmander_0.png",
+            "charmander_1.png",
+            "charmander_2.png"
+        ],
+        "rarity": "rare",
+        "unlocked": true
     },
     "squirtle": {
         "base_speed": 1,
         "behaviour": "walking",
-        "evolution_levels": [16, 36],
+        "evolution_levels": [
+            16,
+            36
+        ],
         "health": 9,
-        "images":  ["squirtle_0.png", "squirtle_1.png", "squirtle_2.png"],
-        "unlocked": "True"
+        "images": [
+            "squirtle_0.png",
+            "squirtle_1.png",
+            "squirtle_2.png"
+        ],
+        "rarity": "rare",
+        "unlocked": true
     },
     "pidgey": {
-        "base_speed": 3,
+        "base_speed": 2,
         "behaviour": "flying",
-        "evolution_levels": [18, 36],
+        "evolution_levels": [
+            18,
+            36
+        ],
         "health": 8,
-        "images":  ["pidgey_0.png", "pidgey_1.png", "pidgey_2.png"],
-        "unlocked": "False"
+        "images": [
+            "pidgey_0.png",
+            "pidgey_1.png",
+            "pidgey_2.png"
+        ],
+        "rarity": "common",
+        "unlocked": false
     }
 }

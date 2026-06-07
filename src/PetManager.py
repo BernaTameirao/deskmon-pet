@@ -3,8 +3,9 @@ import random
 import math
 import json
 import os
-
 from PyQt5.QtCore import QTimer
+
+from Wild import Wild
 
 class PetManager:
     def __init__(self, main_window):
@@ -21,6 +22,10 @@ class PetManager:
     def _get_pet_data_from_json(self, path):
         with open(path, "r", encoding="utf-8") as f:
             self.pet_data = json.load(f)
+
+    def save_data_into_json(self, path):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(self.pet_data, f, indent=4)
 
     def add_pet(self, pet):
         """
@@ -59,6 +64,10 @@ class PetManager:
                 # If all conditions are met, there is a random chance that a battle occurs.
                 if self.check_proximity(pet1, pet2, proximity_x=100, proximity_y=100) and random.random() < 0.1:
                     self.battle(pet1, pet2)
+        
+        # Each tick has a chance to spawn a wild pet.
+        if random.random() < 0.002:
+            self._spawn_wild_pet()
 
     
     def check_proximity(self, pet1, pet2, proximity_x: int = 100, proximity_y: int = 100):
@@ -204,3 +213,28 @@ class PetManager:
 
         sorted_windows = sorted(filtered_windows, key=lambda a: a[1])
         return sorted_windows
+
+    def _spawn_wild_pet(self):
+
+        rarity = ""
+        random_number = random.random()
+        
+        if random_number < 1/32:
+            rarity = "legendary"
+        elif random_number < 1/16:
+            rarity = "epic"
+        elif random_number < 1/8:
+            rarity = "rare"
+        elif random_number < 1/4:
+            rarity = "uncommon"
+        else:
+            rarity = "common"
+
+        can_spawn = [name for name in self.pet_data if self.pet_data[name].get("rarity") == rarity]
+        if not can_spawn:
+            return
+
+        name = random.choice(can_spawn)
+        wild_pet = Wild(name=name, manager=self)
+        wild_pet.show()
+        self.add_pet(wild_pet)

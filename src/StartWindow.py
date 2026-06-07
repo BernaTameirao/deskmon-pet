@@ -12,14 +12,16 @@ class StartWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
         # Pet related variables
         self.manager = PetManager(main_window = self)
-        self.pet_names = self.manager.pet_data.keys()
+        self.pet_names = [name for name in self.manager.pet_data if self.manager.pet_data[name].get("unlocked")]
 
         # Window configurations
         self.setWindowTitle("Deskmon Pet")
         self.setFixedWidth(300)
-        self.setFixedHeight(350)
+        self.setFixedHeight(300)
         self.setStyleSheet(self._info_style())
         self.setWindowFlags(
             Qt.WindowType.Window |
@@ -41,14 +43,8 @@ class StartWindow(QMainWindow):
         layout = QVBoxLayout()
         central_widget.setLayout(layout)
 
-        label = QLabel()
-        label.setFixedHeight(50)
-        label.setText("Your Deskmon:")
-        layout.addWidget(label)
-
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         for name in self.pet_names:
-            img_path = os.path.join(base_dir, f"./imgs/{self.manager.pet_data[name]["images"][0]}")
+            img_path = os.path.join(self.base_dir, f"./imgs/{self.manager.pet_data[name]["images"][0]}")
             img = Image.open(img_path)
             x1, y1, x2, y2 = img.getbbox()
 
@@ -75,5 +71,6 @@ class StartWindow(QMainWindow):
         self.manager.add_pet(pet)
 
     def closeEvent(self, event):
+        self.manager.save_data_into_json(path=os.path.join(self.base_dir, "./data/data.json"))
         QApplication.quit()
         event.accept()

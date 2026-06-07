@@ -119,8 +119,9 @@ class Wild(BasePet):
                 # Closes the pet.
                 self.close_pet()
 
-        # Starts a timer for the pet to evolve.
+        # Starts a timer for the pet to be captured.
         self.reset_timer(callback=shake_image, interval=15)
+        self.manager.pet_data[self.name]["unlocked"] = True
 
     # ========== Mouse events ==========
 
