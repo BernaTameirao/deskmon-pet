@@ -50,8 +50,11 @@ class BasePet(QLabel):
 
     # ========== Setup ==========
 
-    def _load_image(self):
-        self.original_pixmap = QPixmap(self.image_path)
+    def _load_image(self, path=None):
+        if path == None:
+            path = self.image_path
+
+        self.original_pixmap = QPixmap(path)
         pixmap = self.original_pixmap
         
         if self.direction == 1:
