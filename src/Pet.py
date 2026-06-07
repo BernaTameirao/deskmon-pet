@@ -29,7 +29,7 @@ class Pet(QLabel):
         self.evolution_stage = 0
         self.manager = manager
         self.pos_x, self.pos_y = manager.main_window.x() + random.randint(-500, 500), manager.main_window.y() + random.randint(-200, 200)
-        self.direction = random.choice([1, -1])
+        self.direction, self.direction_y = random.choice([1, -1]), random.choice([-1, 1])
         self.vx, self.vy = self.base_speed*self.direction, 0
         self.level = 5
         self.walk_cycle = 0
@@ -40,6 +40,7 @@ class Pet(QLabel):
         self.last_mouse_pos = None
         self.on_delay = False
         self.is_walking = False
+        self.is_flying = False
         self.in_battle = False
 
         # Initial configuration
@@ -125,12 +126,18 @@ class Pet(QLabel):
         if self.drag_offset:
             return
         
-        if "walking" in self.behaviour:
-            if not self._fall_pet():
-                self._walk_pet()
+        if self.behaviour == "flying":
+            if self.floor - self.pos_y >= 100:
+                self.is_flying = True
+                self.is_walking = False
 
-                if self.evolution_stage < len(self.evolution_levels) and self.level >= self.evolution_levels[self.evolution_stage]:
-                    self._evolve_pet()
+            self._fly_pet()
+            
+        if not self._fall_pet():
+            self._walk_pet()
+
+            if self.evolution_stage < len(self.evolution_levels) and self.level >= self.evolution_levels[self.evolution_stage]:
+                self._evolve_pet()
 
         self._cant_escape_bounds()
         self.move(self.pos_x, self.pos_y)
@@ -143,7 +150,7 @@ class Pet(QLabel):
             if the pet is falling (bool).
         """
 
-        if self.is_walking:
+        if self.is_walking or self.is_flying:
             return False
 
         # If the pet is above the floor level, it will begin to fall.
@@ -192,6 +199,44 @@ class Pet(QLabel):
         # Chance to jump
         elif random.random() < 0.001:
             self._jump_pet()
+
+    def _fly_pet(self):
+        """
+        Makes the pet fly.
+        """
+
+        if not self.is_flying:
+            return
+        
+        self.walk_cycle += 1
+
+        offset_y_1 = math.sin(self.walk_cycle * 0.1) * 2
+        offset_y_2 = math.cos(self.walk_cycle * 0.05) * 1
+
+        if self.direction_y == 1:
+            self.pos_y = math.floor(self.pos_y + offset_y_1 + offset_y_2)
+        else:
+            self.pos_y = math.ceil(self.pos_y + offset_y_1 + offset_y_2)
+
+        if self.in_battle:
+            return
+
+        self.vx = self.base_speed * self.direction
+        self.pos_x += self.vx
+
+        # Chance to change directions.
+        if random.random() < 0.005:
+            self.direction *= -1
+            self._flip_image()
+
+        # Chance to change vertical directions.
+        elif random.random() < 0.005:
+            self.direction_y *= -1
+
+        # Chance to stop flying and start walking.
+        elif random.random() < 0.001 and self.floor - self.pos_y<=100:
+            self.is_flying = False
+
 
     def _jump_pet(self, min_height: int = -30, max_height: int = -15):
         """
