@@ -73,7 +73,13 @@ cd ./deskmon-pet
 pip install -r ./requirements.txt
 ```
 
-### 4. Run the application
+### 4. Download the sprite images
+
+```bash
+python ./src/SpriteDownloader.py
+```
+
+### 5. Run the application
 
 ```bash
 python ./src/main.py
