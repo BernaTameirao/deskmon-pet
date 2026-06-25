@@ -34,8 +34,8 @@ class InfoWindow(QDialog):
         self.update_info()
 
     def _info_style(self):
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        with open(os.path.join(base_dir, "../stylesheets/info_window.qss"), "r") as f:
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(os.path.join(base_dir, "./stylesheets/info_window.qss"), "r") as f:
             style = f.read()
 
         return style

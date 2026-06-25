@@ -5,8 +5,8 @@ from PyQt5.QtCore import Qt
 from BasePet import BasePet
 
 class Pet(BasePet):
-    def __init__(self, name:str, manager):
-        super().__init__(name=name, manager=manager)
+    def __init__(self, evolution_line:str, manager, level:int=5):
+        super().__init__(evolution_line=evolution_line, manager=manager, level=level)
 
         # Flags / Utility
         self.drag_offset = None
@@ -22,7 +22,7 @@ class Pet(BasePet):
         if self.drag_offset:
             return
         
-        if self.behaviour == "flying":
+        if self.stage_data["behaviour"] == "flying":
             if self.floor - self.pos_y >= 100:
                 self.is_flying = True
                 self.is_walking = False
@@ -32,7 +32,7 @@ class Pet(BasePet):
         if not self._fall_pet():
             self._walk_pet()
 
-            if self.evolution_stage < len(self.evolution_levels) and self.level >= self.evolution_levels[self.evolution_stage]:
+            if self.stage_data.get("evolution_level") and self.level >= self.stage_data["evolution_level"]:
                 self._evolve_pet()
 
         self._cant_escape_bounds()

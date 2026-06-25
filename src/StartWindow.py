@@ -44,7 +44,7 @@ class StartWindow(QMainWindow):
         central_widget.setLayout(layout)
 
         for name in self.pet_names:
-            img_path = os.path.join(self.base_dir, f"./imgs/{self.manager.pet_data[name]["images"][0]}")
+            img_path = os.path.join(self.base_dir, f"./imgs/{self.manager.pet_data[name]["stages"]["0"]["image"]}")
             img = Image.open(img_path)
             x1, y1, x2, y2 = img.getbbox()
 
@@ -66,7 +66,7 @@ class StartWindow(QMainWindow):
         return style
 
     def create_pet(self, name):
-        pet = Pet(name=name, manager=self.manager)
+        pet = Pet(evolution_line=name, manager=self.manager)
         pet.show()
         self.manager.add_pet(pet)
 

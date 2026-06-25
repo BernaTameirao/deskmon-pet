@@ -60,13 +60,14 @@ class PetManager:
         
         for i, pet1 in enumerate(active_pets):
             for pet2 in active_pets[i+1:]:
-
+                
+                # TO DO: Fazer a lista iterar antes dos pets entrarem em batalha.
                 # If all conditions are met, there is a random chance that a battle occurs.
                 if self.check_proximity(pet1, pet2, proximity_x=100, proximity_y=100) and random.random() < 0.1:
                     self.battle(pet1, pet2)
         
         # Each tick has a chance to spawn a wild pet.
-        if random.random() < 0.002:
+        if random.random() < 0.0005:
             self._spawn_wild_pet()
 
     
@@ -219,11 +220,11 @@ class PetManager:
         rarity = ""
         random_number = random.random()
         
-        if random_number < 1/32:
+        if random_number < 1/64:
             rarity = "legendary"
-        elif random_number < 1/16:
+        elif random_number < 1/32:
             rarity = "epic"
-        elif random_number < 1/8:
+        elif random_number < 1/16:
             rarity = "rare"
         elif random_number < 1/4:
             rarity = "uncommon"
@@ -235,6 +236,6 @@ class PetManager:
             return
 
         name = random.choice(can_spawn)
-        wild_pet = Wild(name=name, manager=self)
+        wild_pet = Wild(evolution_line=name, manager=self)
         wild_pet.show()
         self.add_pet(wild_pet)

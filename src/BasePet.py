@@ -1,6 +1,7 @@
 import random
 import math
 import os
+import bisect
 from PyQt5.QtWidgets import QApplication, QLabel, QMenu, QAction
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QTransform
 from PyQt5.QtCore import Qt, QTimer
@@ -8,30 +9,32 @@ from PyQt5.QtCore import Qt, QTimer
 from InfoWindow import InfoWindow
 
 class BasePet(QLabel):
-    def __init__(self, name:str, manager):
+    def __init__(self, evolution_line:str, manager, level:int = 5):
         super().__init__()
-
         # Directory related variables
         self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
         # Manager related variables
-        pet_data = manager.pet_data[name]
-        self.evolution_levels = pet_data["evolution_levels"]
-        self.behaviour = pet_data["behaviour"]
-        self.images = pet_data["images"]
-        self.base_speed = int(pet_data["base_speed"])
-        self.image_path = os.path.join(self.base_dir, f"./imgs/{self.images[0]}")
+        self.manager = manager
         self.windows = []
 
+        # Gets the evolution levels to determine the evolution stage
+        pet_data = manager.pet_data[evolution_line]
+        evolution_levels = [pet_data["stages"][str(i)]["evolution_level"]
+            for i in range(len(pet_data["stages"]))
+            if "evolution_level" in pet_data["stages"][str(i)]
+        ]
+
         # Pet state
-        self.name = name
-        self.evolution_stage = 0
-        self.manager = manager
+        self.evolution_stage = bisect.bisect_right(evolution_levels, level)
+        self.stage_data = pet_data["stages"][str(self.evolution_stage)]
+        self.name = self.stage_data["name"]
+        self.evolution_line = evolution_line
+        self.image_path = os.path.join(self.base_dir, f"./imgs/{self.stage_data["image"]}")
         self.pos_x, self.pos_y = manager.main_window.x() + random.randint(-500, 500), manager.main_window.y() + random.randint(-200, 200)
-        self.direction = random.choice([1, -1])
-        self.direction_y = random.choice([1, -1]) 
-        self.vx, self.vy = self.base_speed*self.direction, 0
-        self.level = 5
+        self.direction, self.direction_y = random.choice([1, -1]), random.choice([1, -1]) 
+        self.vx, self.vy = int(self.stage_data["base_speed"])*self.direction, 0
+        self.level = level
         self.walk_cycle = 0
         self.info_window = InfoWindow(pet=self)
 
@@ -158,7 +161,7 @@ class BasePet(QLabel):
             return
 
         self.walk_cycle += 1
-        self.vx = self.base_speed * self.direction
+        self.vx = int(self.stage_data["base_speed"]) * self.direction
         self.pos_x += self.vx
 
         # Smooth vertical motion (sinusoidal rocking)
@@ -200,7 +203,7 @@ class BasePet(QLabel):
         if self.in_battle:
             return
 
-        self.vx = self.base_speed * self.direction
+        self.vx = int(self.stage_data["base_speed"]) * self.direction
         self.pos_x += self.vx
 
         # Chance to change directions.
@@ -249,7 +252,8 @@ class BasePet(QLabel):
             if iteration_counter >= 300:
                 # Changes the pet sprite.
                 self.evolution_stage += 1
-                self.image_path = os.path.join(self.base_dir, f"./imgs/{self.images[self.evolution_stage]}")
+                self.stage_data = self.manager.pet_data[self.evolution_line]["stages"][str(self.evolution_stage)]
+                self.image_path = os.path.join(self.base_dir, f"./imgs/{self.stage_data["image"]}")
                 self._load_image()
 
                 # The original timer is run again.

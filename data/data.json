@@ -1,65 +1,627 @@
 {
     "bulbasaur": {
-        "base_speed": 1,
-        "behaviour": "walking",
-        "evolution_levels": [
-            16,
-            32
-        ],
-        "health": 9,
-        "images": [
-            "bulbasaur_0.png",
-            "bulbasaur_1.png",
-            "bulbasaur_2.png"
-        ],
+        "stages": {
+            "0": {
+                "name": "bulbasaur",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 16,
+                "health": 9,
+                "image": "bulbasaur.png"
+            },
+            "1": {
+                "name": "ivysaur",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 32,
+                "health": 12,
+                "image": "ivysaur.png"
+            },
+            "2": {
+                "name": "venusaur",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "health": 15,
+                "image": "venusaur.png"
+            }
+        },
         "rarity": "rare",
         "unlocked": true
     },
     "charmander": {
-        "base_speed": 2,
-        "behaviour": "walking",
-        "evolution_levels": [
-            16,
-            36
-        ],
-        "health": 8,
-        "images": [
-            "charmander_0.png",
-            "charmander_1.png",
-            "charmander_2.png"
-        ],
+        "stages": {
+            "0": {
+                "name": "charmander",
+                "base_speed": 4,
+                "behaviour": "walking",
+                "evolution_level": 16,
+                "health": 8,
+                "image": "charmander.png"
+            },
+            "1": {
+                "name": "charmeleon",
+                "base_speed": 4,
+                "behaviour": "walking",
+                "evolution_level": 36,
+                "health": 11,
+                "image": "charmeleon.png"
+            },
+            "2": {
+                "name": "charizard",
+                "base_speed": 4,
+                "behaviour": "flying",
+                "health": 14,
+                "image": "charizard.png"
+            }
+        },
         "rarity": "rare",
         "unlocked": true
     },
     "squirtle": {
-        "base_speed": 1,
-        "behaviour": "walking",
-        "evolution_levels": [
-            16,
-            36
-        ],
-        "health": 9,
-        "images": [
-            "squirtle_0.png",
-            "squirtle_1.png",
-            "squirtle_2.png"
-        ],
+        "stages": {
+            "0": {
+                "name": "squirtle",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 16,
+                "health": 9,
+                "image": "squirtle.png"
+            },
+            "1": {
+                "name": "wartortle",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 36,
+                "health": 12,
+                "image": "wartortle.png"
+            },
+            "2": {
+                "name": "blastoise",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 15,
+                "image": "blastoise.png"
+            }
+        },
         "rarity": "rare",
         "unlocked": true
     },
+    "caterpie": {
+        "stages": {
+            "0": {
+                "name": "caterpie",
+                "base_speed": 1,
+                "behaviour": "walking",
+                "evolution_level": 7,
+                "health": 9,
+                "image": "caterpie.png"
+            },
+            "1": {
+                "name": "metapod",
+                "base_speed": 0,
+                "behaviour": "walking",
+                "evolution_level": 10,
+                "health": 12,
+                "image": "metapod.png"
+            },
+            "2": {
+                "name": "butterfree",
+                "base_speed": 4,
+                "behaviour": "flying",
+                "health": 15,
+                "image": "butterfree.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "weedle": {
+        "stages": {
+            "0": {
+                "name": "weedle",
+                "base_speed": 1,
+                "behaviour": "walking",
+                "evolution_level": 7,
+                "health": 9,
+                "image": "weedle.png"
+            },
+            "1": {
+                "name": "kakuna",
+                "base_speed": 0,
+                "behaviour": "walking",
+                "evolution_level": 10,
+                "health": 12,
+                "image": "kakuna.png"
+            },
+            "2": {
+                "name": "beedrill",
+                "base_speed": 4,
+                "behaviour": "flying",
+                "health": 15,
+                "image": "beedrill.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
     "pidgey": {
-        "base_speed": 2,
-        "behaviour": "flying",
-        "evolution_levels": [
-            18,
-            36
-        ],
-        "health": 8,
-        "images": [
-            "pidgey_0.png",
-            "pidgey_1.png",
-            "pidgey_2.png"
-        ],
+        "stages": {
+            "0": {
+                "name": "pidgey",
+                "base_speed": 3,
+                "behaviour": "flying",
+                "evolution_level": 18,
+                "health": 8,
+                "image": "pidgey.png"
+            },
+            "1": {
+                "name": "pidgeotto",
+                "base_speed": 4,
+                "behaviour": "flying",
+                "evolution_level": 36,
+                "health": 11,
+                "image": "pidgeotto.png"
+            },
+            "2": {
+                "name": "pidgeot",
+                "base_speed": 5,
+                "behaviour": "flying",
+                "health": 14,
+                "image": "pidgeot.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "rattata": {
+        "stages": {
+            "0": {
+                "name": "rattata",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 20,
+                "health": 8,
+                "image": "rattata.png"
+            },
+            "1": {
+                "name": "raticate",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "raticate.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "spearow": {
+        "stages": {
+            "0": {
+                "name": "spearow",
+                "base_speed": 3,
+                "behaviour": "flying",
+                "evolution_level": 20,
+                "health": 8,
+                "image": "spearow.png"
+            },
+            "1": {
+                "name": "fearow",
+                "base_speed": 4,
+                "behaviour": "flying",
+                "health": 11,
+                "image": "fearow.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "ekans": {
+        "stages": {
+            "0": {
+                "name": "ekans",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 22,
+                "health": 8,
+                "image": "ekans.png"
+            },
+            "1": {
+                "name": "arbok",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "arbok.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "pikachu": {
+        "stages": {
+            "0": {
+                "name": "pikachu",
+                "base_speed": 4,
+                "behaviour": "walking",
+                "evolution_level": 22,
+                "health": 8,
+                "image": "pikachu.png"
+            },
+            "1": {
+                "name": "raichu",
+                "base_speed": 5,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "raichu.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "sandshrew": {
+        "stages": {
+            "0": {
+                "name": "sandshrew",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 22,
+                "health": 8,
+                "image": "sandshrew.png"
+            },
+            "1": {
+                "name": "sandslash",
+                "base_speed": 4,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "sandslash.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "nidoran-f": {
+        "stages": {
+            "0": {
+                "name": "nidoran-f",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 16,
+                "health": 8,
+                "image": "nidoran-f.png"
+            },
+            "1": {
+                "name": "nidorina",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 32,
+                "health": 11,
+                "image": "nidorina.png"
+            },
+            "2": {
+                "name": "nidoqueen",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 14,
+                "image": "nidoqueen.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "nidoran-m": {
+        "stages": {
+            "0": {
+                "name": "nidoran-m",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 16,
+                "health": 8,
+                "image": "nidoran-m.png"
+            },
+            "1": {
+                "name": "nidorino",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 32,
+                "health": 11,
+                "image": "nidorino.png"
+            },
+            "2": {
+                "name": "nidoking",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 14,
+                "image": "nidoking.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "clefairy": {
+        "stages": {
+            "0": {
+                "name": "clefairy",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 30,
+                "health": 8,
+                "image": "clefairy.png"
+            },
+            "1": {
+                "name": "clefable",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "clefable.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "vulpix": {
+        "stages": {
+            "0": {
+                "name": "vulpix",
+                "base_speed": 4,
+                "behaviour": "walking",
+                "evolution_level": 32,
+                "health": 8,
+                "image": "vulpix.png"
+            },
+            "1": {
+                "name": "ninetales",
+                "base_speed": 5,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "ninetales.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "jigglypuff": {
+        "stages": {
+            "0": {
+                "name": "jigglypuff",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 28,
+                "health": 8,
+                "image": "jigglypuff.png"
+            },
+            "1": {
+                "name": "wigglytuff",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "wigglytuff.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "zubat": {
+        "stages": {
+            "0": {
+                "name": "zubat",
+                "base_speed": 4,
+                "behaviour": "flying",
+                "evolution_level": 22,
+                "health": 8,
+                "image": "zubat.png"
+            },
+            "1": {
+                "name": "golbat",
+                "base_speed": 4,
+                "behaviour": "flying",
+                "health": 11,
+                "image": "golbat.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "oddish": {
+        "stages": {
+            "0": {
+                "name": "oddish",
+                "base_speed": 1,
+                "behaviour": "walking",
+                "evolution_level": 22,
+                "health": 8,
+                "image": "oddish.png"
+            },
+            "1": {
+                "name": "gloom",
+                "base_speed": 1,
+                "behaviour": "walking",
+                "evolution_level": 30,
+                "health": 11,
+                "image": "gloom.png"
+            },
+            "2": {
+                "name": "vileplume",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 14,
+                "image": "vileplume.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "paras": {
+        "stages": {
+            "0": {
+                "name": "paras",
+                "base_speed": 1,
+                "behaviour": "walking",
+                "evolution_level": 24,
+                "health": 8,
+                "image": "paras.png"
+            },
+            "1": {
+                "name": "parasect",
+                "base_speed": 1,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "parasect.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "venonat": {
+        "stages": {
+            "0": {
+                "name": "venonat",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 31,
+                "health": 8,
+                "image": "venonat.png"
+            },
+            "1": {
+                "name": "venomoth",
+                "base_speed": 3,
+                "behaviour": "flying",
+                "health": 11,
+                "image": "venomoth.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "diglett": {
+        "stages": {
+            "0": {
+                "name": "diglett",
+                "base_speed": 4,
+                "behaviour": "walking",
+                "evolution_level": 26,
+                "health": 8,
+                "image": "diglett.png"
+            },
+            "1": {
+                "name": "dugtrio",
+                "base_speed": 5,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "dugtrio.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "meowth": {
+        "stages": {
+            "0": {
+                "name": "meowth",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 28,
+                "health": 8,
+                "image": "meowth.png"
+            },
+            "1": {
+                "name": "persian",
+                "base_speed": 4,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "persian.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "psyduck": {
+        "stages": {
+            "0": {
+                "name": "psyduck",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 33,
+                "health": 8,
+                "image": "psyduck.png"
+            },
+            "1": {
+                "name": "golduck",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "golduck.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "mankey": {
+        "stages": {
+            "0": {
+                "name": "mankey",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 28,
+                "health": 8,
+                "image": "mankey.png"
+            },
+            "1": {
+                "name": "primeape",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "primeape.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "growlithe": {
+        "stages": {
+            "0": {
+                "name": "growlithe",
+                "base_speed": 3,
+                "behaviour": "walking",
+                "evolution_level": 34,
+                "health": 8,
+                "image": "growlithe.png"
+            },
+            "1": {
+                "name": "arcanine",
+                "base_speed": 5,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "arcanine.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "poliwag": {
+        "stages": {
+            "0": {
+                "name": "poliwag",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 25,
+                "health": 8,
+                "image": "poliwag.png"
+            },
+            "1": {
+                "name": "poliwhirl",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "evolution_level": 34,
+                "health": 11,
+                "image": "poliwhirl.png"
+            },
+            "2": {
+                "name": "poliwrath",
+                "base_speed": 2,
+                "behaviour": "walking",
+                "health": 11,
+                "image": "poliwrath.png"
+            }
+        },
         "rarity": "common",
         "unlocked": false
     }
