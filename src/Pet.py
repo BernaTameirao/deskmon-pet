@@ -1,4 +1,5 @@
 import math
+import random
 import os
 from PyQt5.QtCore import Qt
 
@@ -7,6 +8,9 @@ from BasePet import BasePet
 class Pet(BasePet):
     def __init__(self, evolution_line:str, manager, level:int=5):
         super().__init__(evolution_line=evolution_line, manager=manager, level=level)
+
+        # Pet state
+        self.pos_x, self.pos_y = manager.main_window.x() + random.randint(-500, 500), manager.main_window.y() + random.randint(-200, 200)
 
         # Flags / Utility
         self.drag_offset = None

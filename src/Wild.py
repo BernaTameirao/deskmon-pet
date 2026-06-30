@@ -1,4 +1,5 @@
 import math
+import random
 import os
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QTransform
@@ -11,8 +12,13 @@ class Wild(BasePet):
     def __init__(self, evolution_line:str, manager, level:int=5):
         super().__init__(evolution_line=evolution_line, manager=manager, level=level)
 
+        # Pet state
         self.health = self.stage_data["health"]
+        out_of_bounds, aux = (self.left, -1) if random.random() < 0.5 else (self.right, 1)
+        self.pos_x = out_of_bounds + 500 * aux
+        self.pos_y = random.randint(self.top, self.floor)
 
+        # Timers
         self.despawn_timer = QTimer()
 
     # ========== Movement ==========

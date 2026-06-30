@@ -31,7 +31,7 @@ class BasePet(QLabel):
         self.name = self.stage_data["name"]
         self.evolution_line = evolution_line
         self.image_path = os.path.join(self.base_dir, f"./imgs/{self.stage_data["image"]}")
-        self.pos_x, self.pos_y = manager.main_window.x() + random.randint(-500, 500), manager.main_window.y() + random.randint(-200, 200)
+        self.pos_x, self.pos_y = -500, -500
         self.direction, self.direction_y = random.choice([1, -1]), random.choice([1, -1]) 
         self.vx, self.vy = int(self.stage_data["base_speed"])*self.direction, 0
         self.level = level
