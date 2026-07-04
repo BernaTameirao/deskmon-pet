@@ -39,7 +39,6 @@ class BasePet(QLabel):
         self.info_window = InfoWindow(pet=self)
 
         # Flags / Utility
-        self.on_delay = False
         self.is_walking = False
         self.is_flying = False
         self.is_teleporting = False
@@ -50,6 +49,7 @@ class BasePet(QLabel):
         self._setup_window()
         self._setup_timers()
         self._setup_screens()
+        self._setup_behaviours()
         self._create_context_menu()
 
     # ========== Setup ==========
@@ -82,8 +82,6 @@ class BasePet(QLabel):
         self.timer = QTimer()
         self.timer.timeout.connect(self._move_pet)
         self.timer.start(15)
-        self.delay_timer = QTimer()
-        self.delay_timer.timeout.connect(self._end_delay)
 
     def _setup_screens(self):
         self.screens = QApplication.instance().screens()
@@ -92,6 +90,13 @@ class BasePet(QLabel):
         self.top = area.top() - self.height() + 60
         self.right = area.right() - self.width()
         self.floor = area.bottom()
+
+    def _setup_behaviours(self):
+        self.behaviour_handlers = {
+            "walking": self._walk_pet,
+            "flying": self._fly_pet,
+            "teleporting": self._teleport_pet,
+        }
 
     def _create_context_menu(self):
         # Loads the qss file
@@ -156,7 +161,7 @@ class BasePet(QLabel):
         Makes the pet walk.
         """
 
-        if not self.is_walking or self.on_delay or self.in_battle:
+        if self._fall_pet() or not self.is_walking or self.in_battle:
             return
 
         self.walk_cycle += 1
@@ -175,7 +180,8 @@ class BasePet(QLabel):
 
         # Chance to pause (delay)
         elif random.random() < 0.002:
-            self._start_delay()
+            delay_ms = random.randint(2000, 4000)  # between 2 and 4 seconds.
+            self.reset_timer(callback=self._end_delay, interval=delay_ms)
 
         # Chance to jump
         elif random.random() < 0.001:
@@ -185,6 +191,10 @@ class BasePet(QLabel):
         """
         Makes the pet fly.
         """
+
+        if self.floor - self.pos_y >= 100:
+            self.is_flying = True
+            self.is_walking = False
 
         if not self.is_flying:
             return
@@ -257,7 +267,7 @@ class BasePet(QLabel):
 
         # Teleport first phase
         if not self.is_teleporting: 
-            if random.random() < 0.005:
+            if random.random() < 0.001:
                 self.reset_timer(callback=animate, interval=15)
                 self.is_teleporting = True
         # Teleport second phase
@@ -374,20 +384,11 @@ class BasePet(QLabel):
         self.timer.timeout.connect(callback)
         self.timer.start(interval)
 
-    def _start_delay(self):
-        """
-        Put the pet in pause mode.
-        """
-
-        self.on_delay = True
-        delay_ms = random.randint(2000, 4000)  # between 2 and 4 seconds.
-        self.delay_timer.start(delay_ms)
-
     def _end_delay(self):
         """
         Exit pause mode.
         """
-        self.on_delay = False
+        self.reset_timer(callback=self._move_pet, interval=15)
 
     def show_info(self):
         """
