@@ -28,18 +28,19 @@ class Wild(BasePet):
         Main movement loop.
         """
         
-        if self.stage_data["behaviour"] == "flying":
+        if "flying" in self.stage_data["behaviour"]:
             if self.floor - self.pos_y >= 100:
                 self.is_flying = True
                 self.is_walking = False
 
             self._fly_pet()
-            
-        if not self._fall_pet():
-            self._walk_pet()
+        
+        if "walking" in self.stage_data["behaviour"]:
+            if not self._fall_pet():
+                self._walk_pet()
 
-            if self.stage_data.get("evolution_level") and self.level >= self.stage_data["evolution_level"]:
-                self._evolve_pet()
+        if self.stage_data.get("evolution_level") and self.level >= self.stage_data["evolution_level"]:
+            self._evolve_pet()
 
         self._cant_fall_floor()
         self._escape_bounds()
