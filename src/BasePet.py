@@ -42,6 +42,7 @@ class BasePet(QLabel):
         self.on_delay = False
         self.is_walking = False
         self.is_flying = False
+        self.is_teleporting = False
         self.in_battle = False
 
         # Initial configuration
@@ -59,13 +60,11 @@ class BasePet(QLabel):
 
         self.original_pixmap = QPixmap(path)
         pixmap = self.original_pixmap
-        
-        if self.direction == 1:
-            transform = QTransform()
-            transform.scale(-1, 1)
-            pixmap = pixmap.transformed(transform)
-        
         self.setPixmap(pixmap)
+
+        # Flips image accordingly with direction.
+        if self.direction == 1:
+            self._flip_image()
 
     def _setup_window(self):
         self.setGeometry(self.pos_x, self.pos_y, 128, 128)
@@ -219,6 +218,53 @@ class BasePet(QLabel):
         elif random.random() < 0.001 and self.floor - self.pos_y<=100:
             self.is_flying = False
 
+    def _teleport_pet(self):
+        """
+        Makes the pet teleport.
+        """
+
+        iteration_counter = 0
+
+        def animate():
+            nonlocal iteration_counter
+
+            iteration_counter += 1
+            scale = (
+                # Shrinks if first phase
+                1 - 0.05 * iteration_counter
+                if self.is_teleporting
+                # Expands if second phase
+                else 0.05 * iteration_counter
+            )
+
+            # Pixmap changes accordingly to phase
+            pixmap = self.original_pixmap.scaled(
+                int(self.original_pixmap.width() * scale),
+                self.original_pixmap.height()
+            )
+            self.setPixmap(pixmap)
+            # Flips image accordingly with direction.
+            if self.direction == 1:
+                self._flip_image()
+
+            if iteration_counter >= 20:
+                # Teleports after first phase.
+                if self.is_teleporting:
+                    self.pos_x += random.randint(-1000, 1000)
+                    self.pos_y += random.randint(-600, 600)
+                # Resets the timer, and the pet starts to move normally again.
+                self.reset_timer(callback=self._move_pet, interval=15)
+
+        # Teleport first phase
+        if not self.is_teleporting: 
+            if random.random() < 0.005:
+                self.reset_timer(callback=animate, interval=15)
+                self.is_teleporting = True
+        # Teleport second phase
+        else:
+            self.reset_timer(callback=animate, interval=15)
+            self.is_teleporting = False
+        
 
     def _jump_pet(self, min_height: int = -30, max_height: int = -15):
         """

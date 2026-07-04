@@ -37,6 +37,9 @@ class Pet(BasePet):
             if not self._fall_pet():
                 self._walk_pet()
 
+        if "teleporting" in self.stage_data["behaviour"]:
+            self._teleport_pet()
+
         if self.stage_data.get("evolution_level") and self.level >= self.stage_data["evolution_level"]:
             self._evolve_pet()
 

@@ -796,6 +796,6 @@
             }
         },
         "rarity": "rare",
-        "unlocked": true
+        "unlocked": false
     }
 }
