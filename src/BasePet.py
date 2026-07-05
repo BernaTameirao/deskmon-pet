@@ -2,7 +2,7 @@ import random
 import math
 import os
 import bisect
-from PyQt5.QtWidgets import QApplication, QLabel, QMenu, QAction
+from PyQt5.QtWidgets import QApplication, QLabel, QMenu, QAction, QDialog
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QTransform
 from PyQt5.QtCore import Qt, QTimer
 
@@ -112,14 +112,18 @@ class BasePet(QLabel):
     
         # Creates actions
         self.info_action = QAction("[   ⓘ   Info   ]", self)
+        self.use_item_action = QAction("[   ◆   Item   ]", self)
         self.close_action = QAction("[   ✖   Close  ]", self)
     
         # Connects actions
         self.info_action.triggered.connect(self.show_info)
+        self.use_item_action.triggered.connect(self.use_item)
         self.close_action.triggered.connect(self.close_pet)
     
         # Adds them to the menu
         self.context_menu.addAction(self.info_action)
+        self.context_menu.addSeparator()
+        self.context_menu.addAction(self.use_item_action)
         self.context_menu.addSeparator()
         self.context_menu.addAction(self.close_action)
 
@@ -395,6 +399,17 @@ class BasePet(QLabel):
         Shows the pet info.
         """
         self.info_window.show()
+
+    def use_item(self):
+        """
+        Uses an item on the pet.
+        """
+        self.manager.inventory_window.show()
+        if self.manager.inventory_window.exec_() == QDialog.Accepted:
+            item = self.manager.inventory_window.selected_item
+            
+            if self.stage_data.get("evolution_item") and item in self.stage_data["evolution_item"]:
+                self._evolve_pet()
 
     def close_pet(self):
         """

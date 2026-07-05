@@ -6,14 +6,17 @@ import os
 from PyQt5.QtCore import QTimer
 
 from Wild import Wild
+from InventoryWindow import InventoryWindow
 
 class PetManager:
     def __init__(self, main_window):
-        self.pets = []
-        self.main_window = main_window
         
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self._get_pet_data_from_json(path=os.path.join(base_dir, "./data/data.json"))
+        
+        self.main_window = main_window
+        self.inventory_window = InventoryWindow(manager=self)
+        self.pets = []
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.update)

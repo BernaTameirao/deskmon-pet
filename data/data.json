@@ -301,6 +301,9 @@
                     "walking"
                 ],
                 "evolution_level": 22,
+                "evolution_item": [
+                    "Thunder Stone"
+                ],
                 "health": 8,
                 "image": "pikachu.png"
             },
@@ -361,6 +364,9 @@
                     "walking"
                 ],
                 "evolution_level": 32,
+                "evolution_item": [
+                    "Moon Stone"
+                ],
                 "health": 11,
                 "image": "nidorina.png"
             },
@@ -396,6 +402,9 @@
                     "walking"
                 ],
                 "evolution_level": 32,
+                "evolution_item": [
+                    "Moon Stone"
+                ],
                 "health": 11,
                 "image": "nidorino.png"
             },
@@ -421,6 +430,9 @@
                     "walking"
                 ],
                 "evolution_level": 30,
+                "evolution_item": [
+                    "Moon Stone"
+                ],
                 "health": 8,
                 "image": "clefairy.png"
             },
@@ -446,6 +458,9 @@
                     "walking"
                 ],
                 "evolution_level": 32,
+                "evolution_item": [
+                    "Fire Stone"
+                ],
                 "health": 8,
                 "image": "vulpix.png"
             },
@@ -471,6 +486,9 @@
                     "walking"
                 ],
                 "evolution_level": 28,
+                "evolution_item": [
+                    "Moon Stone"
+                ],
                 "health": 8,
                 "image": "jigglypuff.png"
             },
@@ -533,6 +551,9 @@
                     "walking"
                 ],
                 "evolution_level": 30,
+                "evolution_item": [
+                    "Leaf Stone"
+                ],
                 "health": 11,
                 "image": "gloom.png"
             },
@@ -709,6 +730,9 @@
                     "walking"
                 ],
                 "evolution_level": 34,
+                "evolution_item": [
+                    "Fire Stone"
+                ],
                 "health": 8,
                 "image": "growlithe.png"
             },
