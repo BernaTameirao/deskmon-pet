@@ -15,7 +15,8 @@ class InventoryWindow(QDialog):
             item
             for pet_data in data.values()
             for stage_data in pet_data["stages"].values()
-            for item in stage_data.get("evolution_item", [])
+            for stage in ([stage_data] if isinstance(stage_data, dict) else stage_data)
+            for item in stage.get("evolution_item", [])
         })
         self.selected_item = None
 

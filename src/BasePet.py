@@ -27,7 +27,13 @@ class BasePet(QLabel):
 
         # Pet state
         self.evolution_stage = bisect.bisect_right(evolution_levels, level)
-        self.stage_data = pet_data["stages"][str(self.evolution_stage)]
+
+        stage_data = pet_data["stages"][str(self.evolution_stage)]
+        if isinstance(stage_data, dict):
+            self.stage_data = stage_data
+        elif isinstance(stage_data, list):
+            self.stage_data = random.choice(stage_data)
+
         self.name = self.stage_data["name"]
         self.evolution_line = evolution_line
         self.image_path = os.path.join(self.base_dir, f"./imgs/{self.stage_data["image"]}")
@@ -92,6 +98,7 @@ class BasePet(QLabel):
         self.floor = area.bottom()
 
     def _setup_behaviours(self):
+        # Joins every behaviour function into this dictionary.
         self.behaviour_handlers = {
             "walking": self._walk_pet,
             "flying": self._fly_pet,
@@ -284,7 +291,7 @@ class BasePet(QLabel):
         """
         Makes the pet jump.
 
-        Parameters
+        Parameters:
             min_height (int): minimum value.
             max_height (int): maximum value.
         """
@@ -295,9 +302,12 @@ class BasePet(QLabel):
         self.vy = random.randint(min_height, max_height)
         self.pos_y += self.vy
 
-    def _evolve_pet(self):
+    def _evolve_pet(self, which_ev=None):
         """
         Evolves the pet.
+
+        Parameters:
+            which_ev: In case of split evolutions (ex: eevee), which evolution was chosen.
         """
 
         iteration_counter = 0
@@ -312,7 +322,13 @@ class BasePet(QLabel):
             if iteration_counter >= 300:
                 # Changes the pet sprite.
                 self.evolution_stage += 1
-                self.stage_data = self.manager.pet_data[self.evolution_line]["stages"][str(self.evolution_stage)]
+                ev_data = self.manager.pet_data[self.evolution_line]["stages"][str(self.evolution_stage)]
+
+                if isinstance(ev_data, dict):
+                    self.stage_data = ev_data
+                elif isinstance(ev_data, list):
+                    self.stage_data = ev_data[which_ev]
+
                 self.image_path = os.path.join(self.base_dir, f"./imgs/{self.stage_data["image"]}")
                 self._load_image()
 
@@ -407,9 +423,9 @@ class BasePet(QLabel):
         self.manager.inventory_window.show()
         if self.manager.inventory_window.exec_() == QDialog.Accepted:
             item = self.manager.inventory_window.selected_item
-            
+
             if self.stage_data.get("evolution_item") and item in self.stage_data["evolution_item"]:
-                self._evolve_pet()
+                self._evolve_pet(which_ev=self.stage_data["evolution_item"].index(item))
 
     def close_pet(self):
         """

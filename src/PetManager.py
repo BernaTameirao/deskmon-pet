@@ -23,10 +23,16 @@ class PetManager:
         self.timer.start(50)  # 20 frames/second
 
     def _get_pet_data_from_json(self, path):
+        """
+        Gets the pet data from the json file.
+        """
         with open(path, "r", encoding="utf-8") as f:
             self.pet_data = json.load(f)
 
     def save_data_into_json(self, path):
+        """
+        Stores the pet data into a new json file.
+        """
         with open(path, "w", encoding="utf-8") as f:
             json.dump(self.pet_data, f, indent=4)
 
@@ -212,17 +218,22 @@ class PetManager:
 
         win32gui.EnumWindows(enum_handler, None)
 
+        # Removes the pets' own windows from the list.
         pet_ids = [int(pet.winId()) for pet in self.pets]
         filtered_windows = [rect for hwnd, rect in windows if hwnd not in pet_ids]
 
+        # Sorts them and returns
         sorted_windows = sorted(filtered_windows, key=lambda a: a[1])
         return sorted_windows
 
     def _spawn_wild_pet(self):
-
+        """
+        Chooses a pet from some random rarity to spawn.
+        """
         rarity = ""
         random_number = random.random()
         
+        # Chooses the rarity randomly.
         if random_number < 1/64:
             rarity = "legendary"
         elif random_number < 1/32:
@@ -234,11 +245,15 @@ class PetManager:
         else:
             rarity = "common"
 
+        # Gets every pet belonging to that rarity.
         can_spawn = [name for name in self.pet_data if self.pet_data[name].get("rarity") == rarity]
         if not can_spawn:
             return
 
+        # Chooses a random pet and spawns as a wild pet.
         name = random.choice(can_spawn)
-        wild_pet = Wild(evolution_line=name, manager=self)
+        level = round(random.triangular(0, 100, 20))
+
+        wild_pet = Wild(evolution_line=name, manager=self, level=level)
         wild_pet.show()
         self.add_pet(wild_pet)

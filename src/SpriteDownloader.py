@@ -52,10 +52,15 @@ if __name__ == "__main__":
     with open(os.path.join(base_dir, "./data/data.json"), "r", encoding="utf-8") as f:
             data = json.load(f)
 
-    sprite_list = [
-        data[evolution_line]["stages"][stage]["name"] 
-        for evolution_line in data.keys()
-        for stage in data[evolution_line]["stages"].keys()
-    ]
+    sprite_list = []
+    for evolution_line in data.keys():
+        for stage in data[evolution_line]["stages"].values():
+            if isinstance(stage, dict):
+                sprite_list.append(stage["name"])
+
+            elif isinstance(stage, list):
+                for i in range(len(stage)):
+                    sprite_list.append(stage[i]["name"])
+
     sprite_list.append("poke-ball")
     get_sprites_from_web(keys=sprite_list)

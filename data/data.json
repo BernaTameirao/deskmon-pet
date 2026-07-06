@@ -119,7 +119,7 @@
             },
             "1": {
                 "name": "metapod",
-                "base_speed": 0,
+                "base_speed": 1,
                 "behaviour": [
                     "walking"
                 ],
@@ -155,7 +155,7 @@
             },
             "1": {
                 "name": "kakuna",
-                "base_speed": 0,
+                "base_speed": 1,
                 "behaviour": [
                     "walking"
                 ],
@@ -300,7 +300,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 22,
                 "evolution_item": [
                     "Thunder Stone"
                 ],
@@ -363,7 +362,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 32,
                 "evolution_item": [
                     "Moon Stone"
                 ],
@@ -401,7 +399,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 32,
                 "evolution_item": [
                     "Moon Stone"
                 ],
@@ -429,7 +426,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 30,
                 "evolution_item": [
                     "Moon Stone"
                 ],
@@ -457,7 +453,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 32,
                 "evolution_item": [
                     "Fire Stone"
                 ],
@@ -485,7 +480,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 28,
                 "evolution_item": [
                     "Moon Stone"
                 ],
@@ -550,7 +544,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 30,
                 "evolution_item": [
                     "Leaf Stone"
                 ],
@@ -729,7 +722,6 @@
                 "behaviour": [
                     "walking"
                 ],
-                "evolution_level": 34,
                 "evolution_item": [
                     "Fire Stone"
                 ],
@@ -777,7 +769,7 @@
                 "behaviour": [
                     "walking"
                 ],
-                "health": 11,
+                "health": 14,
                 "image": "poliwrath.png"
             }
         },
@@ -815,11 +807,1157 @@
                     "walking",
                     "teleporting"
                 ],
-                "health": 11,
+                "health": 14,
                 "image": "alakazam.png"
             }
         },
         "rarity": "rare",
+        "unlocked": false
+    },
+    "machop": {
+        "stages": {
+            "0": {
+                "name": "machop",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 28,
+                "health": 8,
+                "image": "machop.png"
+            },
+            "1": {
+                "name": "machoke",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 40,
+                "health": 11,
+                "image": "machoke.png"
+            },
+            "2": {
+                "name": "machamp",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 14,
+                "image": "machamp.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "bellsprout": {
+        "stages": {
+            "0": {
+                "name": "bellsprout",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 21,
+                "health": 8,
+                "image": "bellsprout.png"
+            },
+            "1": {
+                "name": "weepinbell",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_item": [
+                    "Leaf Stone"
+                ],
+                "health": 11,
+                "image": "weepinbell.png"
+            },
+            "2": {
+                "name": "victreebel",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 14,
+                "image": "victreebel.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "tentacool": {
+        "stages": {
+            "0": {
+                "name": "tentacool",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 30,
+                "health": 8,
+                "image": "tentacool.png"
+            },
+            "1": {
+                "name": "tentacruel",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "tentacruel.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "geodude": {
+        "stages": {
+            "0": {
+                "name": "geodude",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 25,
+                "health": 8,
+                "image": "geodude.png"
+            },
+            "1": {
+                "name": "graveler",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 36,
+                "health": 11,
+                "image": "graveler.png"
+            },
+            "2": {
+                "name": "golem",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 14,
+                "image": "golem.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "ponyta": {
+        "stages": {
+            "0": {
+                "name": "ponyta",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 40,
+                "health": 8,
+                "image": "ponyta.png"
+            },
+            "1": {
+                "name": "rapidash",
+                "base_speed": 6,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "rapidash.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "slowpoke": {
+        "stages": {
+            "0": {
+                "name": "slowpoke",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 37,
+                "health": 8,
+                "image": "slowpoke.png"
+            },
+            "1": {
+                "name": "slowbro",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "slowbro.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "magnemite": {
+        "stages": {
+            "0": {
+                "name": "magnemite",
+                "base_speed": 2,
+                "behaviour": [
+                    "flying"
+                ],
+                "evolution_level": 30,
+                "health": 8,
+                "image": "magnemite.png"
+            },
+            "1": {
+                "name": "magneton",
+                "base_speed": 2,
+                "behaviour": [
+                    "flying"
+                ],
+                "health": 11,
+                "image": "magneton.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "farfetchd": {
+        "stages": {
+            "0": {
+                "name": "farfetchd",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "farfetchd.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "doduo": {
+        "stages": {
+            "0": {
+                "name": "doduo",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 31,
+                "health": 8,
+                "image": "doduo.png"
+            },
+            "1": {
+                "name": "dodrio",
+                "base_speed": 5,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "dodrio.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "seel": {
+        "stages": {
+            "0": {
+                "name": "seel",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 34,
+                "health": 8,
+                "image": "seel.png"
+            },
+            "1": {
+                "name": "dewgong",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "dewgong.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "grimer": {
+        "stages": {
+            "0": {
+                "name": "grimer",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 38,
+                "health": 8,
+                "image": "grimer.png"
+            },
+            "1": {
+                "name": "muk",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "muk.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "shellder": {
+        "stages": {
+            "0": {
+                "name": "shellder",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_item": [
+                    "Water Stone"
+                ],
+                "health": 8,
+                "image": "shellder.png"
+            },
+            "1": {
+                "name": "cloyster",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "cloyster.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "gastly": {
+        "stages": {
+            "0": {
+                "name": "gastly",
+                "base_speed": 3,
+                "behaviour": [
+                    "flying",
+                    "teleporting"
+                ],
+                "evolution_level": 25,
+                "health": 8,
+                "image": "gastly.png"
+            },
+            "1": {
+                "name": "haunter",
+                "base_speed": 3,
+                "behaviour": [
+                    "flying",
+                    "teleporting"
+                ],
+                "evolution_level": 40,
+                "health": 11,
+                "image": "haunter.png"
+            },
+            "2": {
+                "name": "gengar",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking",
+                    "flying",
+                    "teleporting"
+                ],
+                "health": 14,
+                "image": "gengar.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "onix": {
+        "stages": {
+            "0": {
+                "name": "onix",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "onix.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "drowzee": {
+        "stages": {
+            "0": {
+                "name": "drowzee",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 26,
+                "health": 8,
+                "image": "drowzee.png"
+            },
+            "1": {
+                "name": "hypno",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "hypno.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "krabby": {
+        "stages": {
+            "0": {
+                "name": "krabby",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 28,
+                "health": 8,
+                "image": "krabby.png"
+            },
+            "1": {
+                "name": "kingler",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "kingler.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "voltorb": {
+        "stages": {
+            "0": {
+                "name": "voltorb",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 30,
+                "health": 8,
+                "image": "voltorb.png"
+            },
+            "1": {
+                "name": "electrode",
+                "base_speed": 6,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "electrode.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "exeggcute": {
+        "stages": {
+            "0": {
+                "name": "exeggcute",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_item": [
+                    "Leaf Stone"
+                ],
+                "health": 8,
+                "image": "exeggcute.png"
+            },
+            "1": {
+                "name": "exeggutor",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "exeggutor.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "cubone": {
+        "stages": {
+            "0": {
+                "name": "cubone",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 28,
+                "health": 8,
+                "image": "cubone.png"
+            },
+            "1": {
+                "name": "marowak",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "marowak.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "hitmonlee": {
+        "stages": {
+            "0": {
+                "name": "hitmonlee",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "hitmonlee.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "hitmonchan": {
+        "stages": {
+            "0": {
+                "name": "hitmonchan",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "hitmonchan.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "lickitung": {
+        "stages": {
+            "0": {
+                "name": "lickitung",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "lickitung.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "koffing": {
+        "stages": {
+            "0": {
+                "name": "koffing",
+                "base_speed": 2,
+                "behaviour": [
+                    "flying"
+                ],
+                "evolution_level": 35,
+                "health": 8,
+                "image": "koffing.png"
+            },
+            "1": {
+                "name": "weezing",
+                "base_speed": 2,
+                "behaviour": [
+                    "flying"
+                ],
+                "health": 11,
+                "image": "weezing.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "rhyhorn": {
+        "stages": {
+            "0": {
+                "name": "rhyhorn",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 42,
+                "health": 8,
+                "image": "rhyhorn.png"
+            },
+            "1": {
+                "name": "rhydon",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "rhydon.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "chansey": {
+        "stages": {
+            "0": {
+                "name": "chansey",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "chansey.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "tangela": {
+        "stages": {
+            "0": {
+                "name": "tangela",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "tangela.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "kangaskhan": {
+        "stages": {
+            "0": {
+                "name": "kangaskhan",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "kangaskhan.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "horsea": {
+        "stages": {
+            "0": {
+                "name": "horsea",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 32,
+                "health": 8,
+                "image": "horsea.png"
+            },
+            "1": {
+                "name": "seadra",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "seadra.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "goldeen": {
+        "stages": {
+            "0": {
+                "name": "goldeen",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 33,
+                "health": 8,
+                "image": "goldeen.png"
+            },
+            "1": {
+                "name": "seaking",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "seaking.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "staryu": {
+        "stages": {
+            "0": {
+                "name": "staryu",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_item": [
+                    "Water Stone"
+                ],
+                "health": 8,
+                "image": "staryu.png"
+            },
+            "1": {
+                "name": "starmie",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "starmie.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "mr-mime": {
+        "stages": {
+            "0": {
+                "name": "mr-mime",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "mr-mime.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "scyther": {
+        "stages": {
+            "0": {
+                "name": "scyther",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "scyther.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "jynx": {
+        "stages": {
+            "0": {
+                "name": "jynx",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "jynx.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "electabuzz": {
+        "stages": {
+            "0": {
+                "name": "electabuzz",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "electabuzz.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "magmar": {
+        "stages": {
+            "0": {
+                "name": "magmar",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "magmar.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "pinsir": {
+        "stages": {
+            "0": {
+                "name": "pinsir",
+                "base_speed": 2,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "pinsir.png"
+            }
+        },
+        "rarity": "uncommon",
+        "unlocked": false
+    },
+    "tauros": {
+        "stages": {
+            "0": {
+                "name": "tauros",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "tauros.png"
+            }
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "magikarp": {
+        "stages": {
+            "0": {
+                "name": "magikarp",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 20,
+                "health": 8,
+                "image": "magikarp.png"
+            },
+            "1": {
+                "name": "gyarados",
+                "base_speed": 3,
+                "behaviour": [
+                    "flying",
+                    "walking"
+                ],
+                "health": 11,
+                "image": "gyarados.png"
+            }
+        },
+        "rarity": "common",
+        "unlocked": false
+    },
+    "lapras": {
+        "stages": {
+            "0": {
+                "name": "lapras",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "lapras.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "ditto": {
+        "stages": {
+            "0": {
+                "name": "ditto",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "ditto.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "eevee": {
+        "stages": {
+            "0": {
+                "name": "eevee",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_item": [
+                    "Water Stone",
+                    "Thunder Stone",
+                    "Fire Stone"
+                ],
+                "health": 8,
+                "image": "eevee.png"
+            },
+            "1": [
+                {
+                    "name": "vaporeon",
+                    "base_speed": 3,
+                    "behaviour": [
+                        "walking"
+                    ],
+                    "health": 11,
+                    "image": "vaporeon.png"
+                },
+                {
+                    "name": "jolteon",
+                    "base_speed": 5,
+                    "behaviour": [
+                        "walking"
+                    ],
+                    "health": 11,
+                    "image": "jolteon.png"
+                },
+                {
+                    "name": "flareon",
+                    "base_speed": 4,
+                    "behaviour": [
+                        "walking"
+                    ],
+                    "health": 11,
+                    "image": "flareon.png"
+                }
+            ]
+        },
+        "rarity": "rare",
+        "unlocked": false
+    },
+    "porygon": {
+        "stages": {
+            "0": {
+                "name": "porygon",
+                "base_speed": 1,
+                "behaviour": [
+                    "flying",
+                    "teleporting"
+                ],
+                "health": 8,
+                "image": "porygon.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "omanyte": {
+        "stages": {
+            "0": {
+                "name": "omanyte",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 40,
+                "health": 8,
+                "image": "omanyte.png"
+            },
+            "1": {
+                "name": "omastar",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "omastar.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "kabuto": {
+        "stages": {
+            "0": {
+                "name": "kabuto",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 40,
+                "health": 8,
+                "image": "kabuto.png"
+            },
+            "1": {
+                "name": "kabutops",
+                "base_speed": 4,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 11,
+                "image": "kabutops.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "aerodactyl": {
+        "stages": {
+            "0": {
+                "name": "aerodactyl",
+                "base_speed": 6,
+                "behaviour": [
+                    "flying",
+                    "walking"
+                ],
+                "health": 8,
+                "image": "aerodactyl.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "snorlax": {
+        "stages": {
+            "0": {
+                "name": "snorlax",
+                "base_speed": 1,
+                "behaviour": [
+                    "walking"
+                ],
+                "health": 8,
+                "image": "snorlax.png"
+            }
+        },
+        "rarity": "epic",
+        "unlocked": false
+    },
+    "articuno": {
+        "stages": {
+            "0": {
+                "name": "articuno",
+                "base_speed": 5,
+                "behaviour": [
+                    "walking",
+                    "flying"
+                ],
+                "health": 8,
+                "image": "articuno.png"
+            }
+        },
+        "rarity": "legendary",
+        "unlocked": false
+    },
+    "zapdos": {
+        "stages": {
+            "0": {
+                "name": "zapdos",
+                "base_speed": 5,
+                "behaviour": [
+                    "walking",
+                    "flying"
+                ],
+                "health": 8,
+                "image": "zapdos.png"
+            }
+        },
+        "rarity": "legendary",
+        "unlocked": false
+    },
+    "moltres": {
+        "stages": {
+            "0": {
+                "name": "moltres",
+                "base_speed": 5,
+                "behaviour": [
+                    "walking",
+                    "flying"
+                ],
+                "health": 8,
+                "image": "moltres.png"
+            }
+        },
+        "rarity": "legendary",
+        "unlocked": false
+    },
+    "dratini": {
+        "stages": {
+            "0": {
+                "name": "dratini",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 30,
+                "health": 8,
+                "image": "dratini.png"
+            },
+            "1": {
+                "name": "dragonair",
+                "base_speed": 3,
+                "behaviour": [
+                    "walking"
+                ],
+                "evolution_level": 55,
+                "health": 11,
+                "image": "dragonair.png"
+            },
+            "2": {
+                "name": "dragonite",
+                "base_speed": 5,
+                "behaviour": [
+                    "walking",
+                    "flying"
+                ],
+                "health": 14,
+                "image": "dragonite.png"
+            }
+        },
+        "rarity": "legendary",
+        "unlocked": false
+    },
+    "mewtwo": {
+        "stages": {
+            "0": {
+                "name": "mewtwo",
+                "base_speed": 5,
+                "behaviour": [
+                    "walking",
+                    "teleporting"
+                ],
+                "health": 8,
+                "image": "mewtwo.png"
+            }
+        },
+        "rarity": "legendary",
+        "unlocked": false
+    },
+    "mew": {
+        "stages": {
+            "0": {
+                "name": "mew",
+                "base_speed": 5,
+                "behaviour": [
+                    "flying",
+                    "walking",
+                    "teleporting"
+                ],
+                "health": 8,
+                "image": "mew.png"
+            }
+        },
+        "rarity": "legendary",
         "unlocked": false
     }
 }
