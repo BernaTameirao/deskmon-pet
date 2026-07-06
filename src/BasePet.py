@@ -88,6 +88,7 @@ class BasePet(QLabel):
         self.timer = QTimer()
         self.timer.timeout.connect(self._move_pet)
         self.timer.start(15)
+        self.delay_timer = QTimer()
 
     def _setup_screens(self):
         self.screens = QApplication.instance().screens()
@@ -172,7 +173,7 @@ class BasePet(QLabel):
         Makes the pet walk.
         """
 
-        if self._fall_pet() or not self.is_walking or self.in_battle:
+        if self._fall_pet() or not self.is_walking or self.in_battle or self.delay_timer.isActive():
             return
 
         self.walk_cycle += 1
@@ -191,8 +192,7 @@ class BasePet(QLabel):
 
         # Chance to pause (delay)
         elif random.random() < 0.002:
-            delay_ms = random.randint(2000, 4000)  # between 2 and 4 seconds.
-            self.reset_timer(callback=self._end_delay, interval=delay_ms)
+            self._start_delay()
 
         # Chance to jump
         elif random.random() < 0.001:
@@ -404,11 +404,14 @@ class BasePet(QLabel):
         self.timer.timeout.connect(callback)
         self.timer.start(interval)
 
-    def _end_delay(self):
+    def _start_delay(self):
         """
-        Exit pause mode.
+        Put the pet in pause mode.
         """
-        self.reset_timer(callback=self._move_pet, interval=15)
+
+        delay_ms = random.randint(2000, 4000)  # between 2 and 4 seconds.
+        self.delay_timer.setSingleShot(True)
+        self.delay_timer.start(delay_ms)
 
     def show_info(self):
         """
