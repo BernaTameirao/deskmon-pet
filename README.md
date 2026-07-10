@@ -9,11 +9,15 @@ They walk, jump and can even be dragged with your mouse — all in real time!
 
 ## Features
 
-- Pets that move naturally across your desktop  
-- Jumping and falling animations with simulated gravity  
-- Smooth visual effects
-- Click and drag interaction  
-- Multi-monitor support  
+- Multiple desktop pets with unique animations.
+- Pets can freely walk around the desktop.
+- Drag-and-drop interaction.
+- Pet battles with randomized outcomes.
+- Level progression through battles.
+- Pets can evolve through level or items.
+- Wild pets can randomly appear on the screen.
+- Pets can be unlocked through capture.
+- Save system to preserve unlocked pets.
 
 ---
 
@@ -97,3 +101,7 @@ They will move automatically, and you can drag them around or interact with them
 - Dependencies listed in `requirements.txt`
 
 ---
+## Copyright (C) 2026 Bernardo Tameirão
+
+This project is licensed under the GNU General Public License v3.
+See LICENSE for details.
