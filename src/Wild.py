@@ -123,6 +123,7 @@ class Wild(BasePet):
         # Starts a timer for the pet to be captured.
         self.reset_timer(callback=shake_image, interval=15)
         self.manager.pet_data[self.evolution_line]["unlocked"] = True
+        self.manager.main_window.update()
 
     # ========== Mouse events ==========
 

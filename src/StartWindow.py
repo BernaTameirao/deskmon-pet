@@ -18,7 +18,6 @@ class StartWindow(QMainWindow):
 
         # Pet related variables
         self.manager = PetManager(main_window = self)
-        self.pet_names = [name for name in self.manager.pet_data if self.manager.pet_data[name].get("unlocked")]
 
         # Icon modifications
         img_path = os.path.join(self.base_dir, "./imgs/pikachu.png")
@@ -38,6 +37,10 @@ class StartWindow(QMainWindow):
         )
 
         # UI construction        
+        self.update()
+
+    def update(self):
+        self.pet_names = [name for name in self.manager.pet_data if self.manager.pet_data[name].get("unlocked")]
         self._build_ui()
     
     def _build_ui(self):
@@ -75,6 +78,7 @@ class StartWindow(QMainWindow):
         self.manager.add_pet(pet)
 
     def closeEvent(self, event):
-        self.manager.save_data_into_json(path=os.path.join(self.base_dir, "./data/data.json"))
+        
+        self.manager.save_data_into_json(path=os.path.join(self.manager.base_dir, "./data/data.json"))
         QApplication.quit()
         event.accept()

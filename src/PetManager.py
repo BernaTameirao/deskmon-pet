@@ -13,8 +13,18 @@ from InventoryWindow import InventoryWindow
 class PetManager:
     def __init__(self, main_window):
         
-        base_dir = sys._MEIPASS if getattr(sys, "frozen", False) else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        self._get_pet_data_from_json(path=os.path.join(base_dir, "./data/data.json"))
+        if getattr(sys, "frozen", False):
+            exe_dir = os.path.dirname(sys.executable)
+            external_json = os.path.join(exe_dir, "data", "data.json")
+
+            if os.path.exists(external_json):
+                self.base_dir = exe_dir
+            else:
+                self.base_dir = sys._MEIPASS
+        else:
+            self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+        self._get_pet_data_from_json(path=os.path.join(self.base_dir, "./data/data.json"))
         
         self.main_window = main_window
         self.inventory_window = InventoryWindow(manager=self)
