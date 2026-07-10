@@ -82,10 +82,10 @@ class PetManager:
         for i, pet1 in enumerate(active_pets):
             for pet2 in active_pets[i+1:]:
                 
-                # TO DO: Fazer a lista iterar antes dos pets entrarem em batalha.
                 # If all conditions are met, there is a random chance that a battle occurs.
                 if self.check_proximity(pet1, pet2, proximity_x=100, proximity_y=100) and random.random() < 0.1:
                     self.battle(pet1, pet2)
+                    break
         
         # Each tick has a chance to spawn a wild pet.
         if random.random() < 0.0005:
@@ -165,6 +165,9 @@ class PetManager:
             pet2: Second pet.
             winner: Pet that won the battle.
         """
+        if pet1.in_battle or pet2.in_battle:
+            return
+
         iteration_counter = 0
         pet1.in_battle = True
         pet2.in_battle = True
@@ -177,7 +180,7 @@ class PetManager:
             if not self.check_proximity(pet1, pet2, proximity_x=200, proximity_y=200):
                 pet1.in_battle = False
                 pet2.in_battle = False
-                timer.stop()
+                pet1.delay_timer.stop()
                 return
 
             # Idle animation that the pets do when in battle.
@@ -189,7 +192,7 @@ class PetManager:
             
             # When the battle is over
             if iteration_counter >= 500:
-                timer.stop()
+                pet1.delay_timer.stop()
                 
                 if winner is pet1:
                     pet1.win_battle()
@@ -209,9 +212,9 @@ class PetManager:
                 pet2.in_battle = False
 
         # Starts the timer for the battle animations.
-        timer = QTimer()
-        timer.timeout.connect(animate)
-        timer.start(15)
+        pet1.delay_timer = QTimer()
+        pet1.delay_timer.timeout.connect(animate)
+        pet1.delay_timer.start(15)
 
     def _get_windows(self):
         """
