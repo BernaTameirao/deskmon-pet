@@ -79,6 +79,13 @@ class StartWindow(QMainWindow):
 
     def closeEvent(self, event):
         
-        self.manager.save_data_into_json(path=os.path.join(self.manager.base_dir, "./data/data.json"))
+        if getattr(sys, "frozen", False):
+            save_dir = os.path.dirname(sys.executable)
+        else:
+            save_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+        os.makedirs(os.path.join(save_dir, "data"), exist_ok=True)
+
+        self.manager.save_data_into_json(path=os.path.join(save_dir, "./data/data.json"))
         QApplication.quit()
         event.accept()
