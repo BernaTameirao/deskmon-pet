@@ -143,21 +143,18 @@ class PetManager:
 
         n = 5
         # Two moves are chosen at random.
-        move1 = random.randint(1, n)
-        time.sleep(0.01)
-        move2 = random.randint(1, n)
+        move1 = random.randrange(n)
+        move2 = random.randrange(n)
 
-        # A rock-paper-scissor like script decides the winner.
-        # If tie, the winner is None
         if move1 == move2:
             return None
-        
-        if (move1 + 1) % n == move2:
-            return pet1
-        elif (move2 + 1) % n == move1:
+
+        diff = (move2 - move1) % n
+
+        if diff <= n // 2:
             return pet2
-        else: # If an error happens
-            return None 
+        else:
+            return pet1
 
     def handle_battle_result(self, pet1, pet2, winner):
         """
