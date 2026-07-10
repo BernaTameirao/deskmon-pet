@@ -1,6 +1,8 @@
 import os
+import sys
 from functools import partial
 from PIL import Image
+
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QPushButton, QApplication, QWidget, QLabel, QScrollArea
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QIcon, QPixmap
@@ -12,14 +14,20 @@ class StartWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.base_dir = sys._MEIPASS if getattr(sys, "frozen", False) else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
         # Pet related variables
         self.manager = PetManager(main_window = self)
         self.pet_names = [name for name in self.manager.pet_data if self.manager.pet_data[name].get("unlocked")]
 
+        # Icon modifications
+        img_path = os.path.join(self.base_dir, "./imgs/pikachu.png")
+        x1, y1, x2, y2 = Image.open(img_path).getbbox()
+        pixmap = QPixmap(img_path).copy(x1, y1, x2-x1, y2-y1)
+
         # Window configurations
         self.setWindowTitle("Deskmon Pet")
+        self.setWindowIcon(QIcon(pixmap))
         self.setFixedWidth(300)
         self.setFixedHeight(300)
         self.setStyleSheet(self._info_style())
@@ -45,11 +53,8 @@ class StartWindow(QMainWindow):
 
         for name in self.pet_names:
             img_path = os.path.join(self.base_dir, f"./imgs/{self.manager.pet_data[name]["stages"]["0"]["image"]}")
-            img = Image.open(img_path)
-            x1, y1, x2, y2 = img.getbbox()
-
-            pixmap = QPixmap(img_path)
-            pixmap = pixmap.copy(x1, y1, x2-x1, y2-y1)
+            x1, y1, x2, y2 = Image.open(img_path).getbbox()
+            pixmap = QPixmap(img_path).copy(x1, y1, x2-x1, y2-y1)
 
             button = QPushButton()
             button.setIcon(QIcon(pixmap))
@@ -59,8 +64,7 @@ class StartWindow(QMainWindow):
             layout.addWidget(button)
 
     def _info_style(self):
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        with open(os.path.join(base_dir, "../stylesheets/info_window.qss"), "r") as f:
+        with open(os.path.join(self.base_dir, "./stylesheets/info_window.qss"), "r") as f:
             style = f.read()
 
         return style

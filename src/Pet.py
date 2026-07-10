@@ -1,6 +1,7 @@
 import math
 import random
 import os
+
 from PyQt5.QtCore import Qt
 
 from BasePet import BasePet

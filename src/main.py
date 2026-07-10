@@ -1,17 +1,11 @@
 import sys
 import os
-import logging
+
 from PyQt5.QtWidgets import QApplication
 
 from StartWindow import StartWindow
 
 def main():
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[logging.FileHandler("debug.log"), logging.StreamHandler()],
-    )
-
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False)
 

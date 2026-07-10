@@ -2,10 +2,11 @@ import os
 import requests
 import glob
 import json
+import sys
 
 def get_sprites_from_web(keys:list[str], sprite_type:str="normal", output_dir:str="imgs"):
 
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base_dir = sys._MEIPASS if getattr(sys, "frozen", False) else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     output_dir = os.path.join(base_dir, output_dir)
     os.makedirs(output_dir, exist_ok=True)
 
@@ -48,7 +49,7 @@ def get_sprites_from_web(keys:list[str], sprite_type:str="normal", output_dir:st
 
 if __name__ == "__main__":
 
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base_dir = sys._MEIPASS if getattr(sys, "frozen", False) else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     with open(os.path.join(base_dir, "./data/data.json"), "r", encoding="utf-8") as f:
             data = json.load(f)
 

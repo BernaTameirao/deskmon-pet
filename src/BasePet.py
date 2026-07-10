@@ -1,7 +1,9 @@
 import random
 import math
 import os
+import sys
 import bisect
+
 from PyQt5.QtWidgets import QApplication, QLabel, QMenu, QAction, QDialog
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QTransform
 from PyQt5.QtCore import Qt, QTimer
@@ -12,7 +14,7 @@ class BasePet(QLabel):
     def __init__(self, evolution_line:str, manager, level:int = 5):
         super().__init__()
         # Directory related variables
-        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.base_dir = sys._MEIPASS if getattr(sys, "frozen", False) else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
         # Manager related variables
         self.manager = manager

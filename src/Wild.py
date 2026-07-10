@@ -1,9 +1,9 @@
 import math
 import random
 import os
+
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QTransform
-
 from PyQt5.QtWidgets import QApplication, QLabel, QMenu, QAction
 
 from BasePet import BasePet

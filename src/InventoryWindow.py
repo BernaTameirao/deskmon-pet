@@ -1,13 +1,17 @@
 import os
+import sys
 from functools import partial
+from PIL import Image
 
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QPushButton, QWidget, QScrollArea
 from PyQt5.QtCore import QTimer
+from PyQt5.QtGui import QIcon, QPixmap
 
 class InventoryWindow(QDialog):
     def __init__(self, manager):
         super().__init__()
 
+        self.base_dir = sys._MEIPASS if getattr(sys, "frozen", False) else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.manager = manager
 
         data = self.manager.pet_data
@@ -20,7 +24,13 @@ class InventoryWindow(QDialog):
         })
         self.selected_item = None
 
+        # Icon modifications
+        img_path = os.path.join(self.base_dir, "./imgs/poke-ball.png")
+        x1, y1, x2, y2 = Image.open(img_path).getbbox()
+        pixmap = QPixmap(img_path).copy(x1, y1, x2-x1, y2-y1)
+
         self.setWindowTitle("Inventory")
+        self.setWindowIcon(QIcon(pixmap))
         self.setFixedWidth(350)
         self.setStyleSheet(self._info_style())
 
@@ -44,8 +54,7 @@ class InventoryWindow(QDialog):
             content_layout.addWidget(button)
 
     def _info_style(self):
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        with open(os.path.join(base_dir, "./stylesheets/info_window.qss"), "r") as f:
+        with open(os.path.join(self.base_dir, "./stylesheets/info_window.qss"), "r") as f:
             style = f.read()
 
         return style
