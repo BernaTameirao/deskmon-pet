@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "A cute desktop pet application using PyQt5."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["pyqt5>=5.15.10"]
+dependencies = [
+    "pillow>=12.2.0",
+    "pywin32>=311",
+    "requests>=2.34.2",
+    "pyqt5>=5.15.10",
+    "pyqt5-qt5>=5.15.2",
+]

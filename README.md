@@ -96,7 +96,7 @@ They will move automatically, and you can drag them around or interact with them
 
 ## Requirements
 
-- Python 3.10 or higher  
+- Python 3.12 or higher  
 - Operating System: Windows
 - Dependencies listed in `requirements.txt`
 
